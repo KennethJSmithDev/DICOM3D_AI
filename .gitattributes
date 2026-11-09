@@ -1,0 +1,6 @@
+# Contest payload hashes bind exact bytes across Git clones and archive extraction.
+.gitignore -text
+NOTICE -text
+contest/build154/** -text
+# The atlas index and bundle manifests pin exact source bytes.
+contest/safe-demo/** -text

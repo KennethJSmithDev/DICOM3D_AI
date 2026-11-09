@@ -1,0 +1,10 @@
+DICOM3D AI Hub
+Copyright 2026 KennethJSmithDev (personal copyright owner).
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+Third-party software and reference data retain their respective licenses.
+The redistributed Babylon Lite 1.32.0 license and notice are in
+contest/build154/frontend/third-party/. The original reference and public
+research-study notices are in contest/build154/frontend/reference/ and
+contest/build154/frontend/demo/h000/. The expanded BodyParts3D atlas notice
+is in contest/safe-demo/expanded-atlas/LICENSE.md.

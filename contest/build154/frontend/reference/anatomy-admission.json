@@ -1,0 +1,19 @@
+{
+  "revision": "ANAT-EXPAND-002",
+  "generator_canonical_lf_sha256": "a03f8dc8268cdf593625349f502aa4c6d16d13130551275ed5fdf13151194afa",
+  "sources": {
+    "male_archive": "9fbc713fffeee924a5a657d9813d84d7eb957bded63adb854931dd5e3eb61c97"
+  },
+  "variants": [
+    {
+      "variant": "bp3d-male",
+      "new_groups": 349,
+      "total_groups": 386,
+      "added_vertices": 783122,
+      "added_triangles": 1301058,
+      "added_geometry_bytes": 34407624,
+      "glb_bytes": 82285164,
+      "glb_sha256": "c44f884861550d92e54bae4beb8ebfd5b4927d61c37034e5f6a61f7b4b41d4d4"
+    }
+  ]
+}

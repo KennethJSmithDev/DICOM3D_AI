@@ -1,0 +1,69 @@
+.demo-profile{padding:8px 16px;background:#102a38;color:#e5faff;font:14px system-ui;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.demo-profile button[aria-pressed=true]{outline:2px solid #67ddf6}
+.demo-profile button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+body.public-workstation #openVerifiedStudy {display:none!important}
+body.public-workstation #referenceWorkspacePanel:not([hidden]),body.public-workstation #imagingToolsPanel:not([hidden]) {position:absolute;z-index:9;left:92px;top:118px;bottom:14px;width:min(420px,calc(100% - 112px));overflow:auto;background:#081b2af5;border:1px solid #37647b;border-radius:8px;padding:18px;box-shadow:0 15px 55px #000b}
+body.public-workstation #referenceWorkspacePanel .reference-library {display:flex;flex-direction:column;align-items:stretch;gap:10px;min-width:0;max-width:100%;overflow-wrap:anywhere}
+body.public-workstation #referenceWorkspacePanel .reference-library label {font-size:12px}
+body.public-workstation #referenceWorkspacePanel .reference-library select {width:100%}
+body.public-workstation #referenceWorkspacePanel .viewport-heading {margin-bottom:14px}
+body.public-workstation #referenceWorkspacePanel .reference-library > p:not(#studyAdmissionNotice) {display:block}
+body.public-workstation #evidencePanel #studyAdmissionNotice {display:block;max-width:none;margin:12px 0;font-size:12px}
+body.public-workstation #simActions:not([hidden]) {display:flex;gap:6px;flex-wrap:wrap;padding:6px 0}
+body.public-workstation #imagingToolsPanel .source-tools {display:block}
+body.public-workstation #imagingToolsPanel .source-tools summary {font-weight:600;margin-bottom:12px}
+body.public-workstation #imagingToolsPanel .source-tools[open] .tool-grid {position:static;inset:auto;max-height:none;overflow:visible;box-shadow:none}
+body.public-workstation #workspaceControls:not(.anatomy-right) {left:92px;right:auto}
+body.public-workstation main.viewport {position:relative}
+body.public-workstation .reference-footer-banner:not([hidden]) {display:block;position:absolute;z-index:3;left:0;right:0;bottom:46px;padding:6px 10px;text-align:center;background:#06121aaa;color:#c4dce5;font-size:11px;pointer-events:none}
+body.public-workstation .local-study-sheet:not([hidden]) {position:absolute;z-index:30;left:92px;top:90px;max-width:min(520px,calc(100% - 112px));max-height:75%;overflow:auto;background:#0b2031;border:1px solid #37647b;border-radius:8px;padding:16px}
+@media (max-width: 800px) {
+  body.public-workstation .workspace,body.public-workstation .workspace.has-ct {
+    flex-direction:column;min-height:0;
+  }
+  body.public-workstation .public-rail {
+    order:2;flex:0 0 auto;flex-direction:row;width:100%;padding:4px max(6px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-left));gap:4px;justify-content:space-around;overflow-x:auto;overflow-y:hidden;border-right:0;border-top:1px solid #203f50;
+  }
+  body.public-workstation .public-rail button {width:auto;min-width:48px;min-height:48px;gap:2px}
+  body.public-workstation .public-rail #labToggle {margin-top:0}
+  body.public-workstation #publicStage {padding:8px;min-height:0}
+  body.public-workstation .public-toolbar {max-height:34dvh;overflow:auto}
+  body.public-workstation .reference-library {flex:none;max-height:26dvh;overflow:auto}
+  body.public-workstation #labPanel,body.public-workstation #learningPanel,
+  body.public-workstation #evidencePanel,body.public-workstation #workspaceControls {
+    position:absolute;inset:auto 8px calc(64px + env(safe-area-inset-bottom)) 8px;
+    width:auto;max-height:min(68%, 520px);overflow:auto;
+  }
+  body.public-workstation #simOutcome:not([hidden]) {
+    position:fixed;z-index:20;left:8px;right:8px;bottom:calc(64px + env(safe-area-inset-bottom));max-height:40dvh;overflow:auto;
+  }
+  body.public-workstation .local-study-sheet:not([hidden]) {inset:auto 8px calc(64px + env(safe-area-inset-bottom));max-width:none;max-height:60%}
+  body.public-workstation #referenceWorkspacePanel:not([hidden]),body.public-workstation #imagingToolsPanel:not([hidden]) {inset:auto 8px calc(64px + env(safe-area-inset-bottom));width:auto;max-height:min(68%,520px);bottom:calc(64px + env(safe-area-inset-bottom))}
+  body.public-workstation #workspaceControls:not(.anatomy-right) {left:8px;right:8px}
+}
+
+/* Keep the showcase tall; controls remain independent of its renderer/state. */
+body.public-workstation .app-header {position:relative}
+body.public-workstation .simulation-banner {position:absolute;top:5px;left:50%;transform:translateX(-50%);color:#9bc9d8;font-size:10px;white-space:nowrap;pointer-events:none}
+body.public-workstation .demo-profile {padding:12px 0;background:transparent;display:flex;flex-wrap:wrap;gap:8px}
+body.public-workstation .demo-profile strong {flex-basis:100%;color:#b7dce7;font-size:12px}
+body.public-workstation .demo-profile button[aria-pressed=true] {outline:2px solid #67ddf6}
+body.public-workstation .demo-profile button:focus-visible {outline:3px solid #fff;outline-offset:2px}
+body.public-workstation #imagingToolsPanel .source-tools > summary {display:none}
+body.public-workstation #simOutcome:not([hidden]) {position:absolute;z-index:10;left:92px;top:118px;bottom:auto;width:min(420px,calc(100% - 112px));max-height:calc(100% - 132px);overflow:auto;padding:18px;background:#081b2af5;border:1px solid #37647b;border-radius:8px;color:#d9f6ff;box-shadow:0 15px 55px #000b}
+@media (min-width:801px) {
+  body.public-workstation #imagingToolsPanel:not([hidden]),body.public-workstation #simOutcome:not([hidden]) {left:262px}
+  body.public-workstation #publicStage {padding:0 165px 0 0}
+  body.public-workstation #publicStage:has(#simActions:not([hidden])) {padding-left:180px}
+  body.public-workstation .public-toolbar {position:absolute;top:14px;right:10px;width:145px;z-index:4}
+  body.public-workstation .mode-switch {width:100%;flex-direction:column;align-items:stretch}
+  body.public-workstation #workspaceMode {position:absolute;top:160px;right:12px;width:140px;white-space:normal;text-overflow:clip;line-height:1.4}
+  body.public-workstation #simActions:not([hidden]) {position:absolute;top:14px;left:10px;width:160px;padding:0;flex-direction:column;align-items:stretch}
+  body.public-workstation #simActions > button {white-space:normal;text-align:left}
+  body.public-workstation #viewingArea {max-width:none}
+  body.public-workstation main.viewport {width:100%;height:100%;aspect-ratio:auto;box-sizing:border-box}
+}
+@media (max-width:800px) {
+  body.public-workstation .simulation-banner {top:2px;left:auto;right:14px;transform:none;font-size:9px}
+  body.public-workstation #simOutcome:not([hidden]) {position:absolute;inset:auto 8px calc(64px + env(safe-area-inset-bottom));width:auto;max-height:45dvh;overflow:auto}
+}
