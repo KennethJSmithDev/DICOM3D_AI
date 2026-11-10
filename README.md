@@ -5,7 +5,7 @@
 **[Contest installation and demonstration](contest/build154/README.md)** · **[Native agent source](contest/build154/src/Native005.Operation.cls)** · **[Broader platform prerelease](https://github.com/KennethJSmithDev/DICOM3D/releases/tag/v0.7.0-alpha.1)**
 
 <p align="center">
-  <img src="assets/branding/dicom3d-logo.png" alt="DICOM3D Logo" width="480">
+  <img src="assets/branding/dicom3d-ai-hub-logo.png" alt="DICOM3D AI Hub logo" width="480">
 </p>
 
 This contest edition demonstrates a bounded decision-making task: an IRIS Interoperability production uses native `%AI.Agent` to explain a recorded public-research segmentation finding, retrieve restricted FHIR R5 evidence, validate its exact references and select the corresponding lesion in the imaging viewer. A synthetic source-identity mismatch requests review instead of inventing a correction.
@@ -17,6 +17,8 @@ Start with the [portable packet instructions](contest/build154/README.md#install
 **Qualification status:** The native explanation/validated lesion-selection and synthetic mismatch paths were demonstrated on the earlier frozen packet. This male-only source derivative has a different packaging identity. Intermittent CPU inference failures remain unresolved, and a five-run repeatability gate was not completed. Read the [tested scope and known limitations](contest/build154/README.md#tested-scope-and-known-limitations) before installing or demonstrating.
 
 The male-only derivative has subsequently completed a fresh isolated Build 154 and FHIR R5 startup, production start/stop, nine-resource readback and authorization-denial checks using the historical pinned model. No new inference was run in that startup check. The [runtime guide](contest/build154/docs/RUNTIME.md) documents the exact model and image identities; this historical fixture is not a claim of general provider support.
+
+**Local runtime safety:** The frozen `contest.py stop` command invokes an unscoped IRIS production shutdown. Never use it when production ownership is uncertain or another production may have replaced the original; require manual, operator-supervised shutdown and recovery in that situation. Loopback HTTP Basic authentication does not establish the listener’s identity, so use the workflow only on a trusted local host.
 
 The imaging agent uses its restricted native toolsets in-process. A separate historical Build 154 test qualified authenticated MCP with synthetic tools, but this repository does not yet provide a DICOM3D-specific authenticated MCP endpoint.
 
