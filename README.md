@@ -18,12 +18,14 @@ Start with the [portable packet instructions](contest/build154/README.md#install
 
 The male-only derivative has subsequently completed a fresh isolated Build 154 and FHIR R5 startup, production start/stop, nine-resource readback and authorization-denial checks using the historical pinned model. No new inference was run in that startup check. The [runtime guide](contest/build154/docs/RUNTIME.md) documents the exact model and image identities; this historical fixture is not a claim of general provider support.
 
-**Local runtime safety:** The frozen `contest.py stop` command invokes an unscoped IRIS production shutdown. Never use it when production ownership is uncertain or another production may have replaced the original; require manual, operator-supervised shutdown and recovery in that situation. Loopback HTTP Basic authentication does not establish the listener’s identity, so use the workflow only on a trusted local host.
+**Local runtime safety:** The frozen `contest.py stop` command invokes an unscoped IRIS production shutdown. Never use it when production ownership is uncertain or another production may have replaced the original; require manual, operator-supervised shutdown and recovery in that situation. This warning supersedes the frozen installation guide's statement that Stop acts only on owned resources. Loopback HTTP Basic authentication does not establish the listener’s identity, so use the workflow only on a trusted local host.
 
 The imaging agent uses its restricted native toolsets in-process. A separate historical Build 154 test qualified authenticated MCP with synthetic tools, but this repository does not yet provide a DICOM3D-specific authenticated MCP endpoint.
 
 ## Local Safe Demo
 
 The [Safe Demo source](contest/safe-demo/README.md) builds a standalone, browser-only anatomy and imaging presentation. Its AI outcomes are **simulated**; it does not connect to the native agent, IRIS or a model. It is not currently deployed from this repository. The existing viewer requires WebGPU; a WebGL fallback is not qualified. The demo's expanded male reference and the native frontend's reference are separately packaged.
+
+The H000 source-binding metadata and notice retain labels from a pre-publication checkpoint. Those historical labels do not describe the current publication status of this repository; the source attribution, license terms and research limitations still apply.
 
 Software: [Apache-2.0](LICENSE). Existing [notice](NOTICE) and [asset-specific attribution](contest/build154/docs/ASSETS.md) remain separate.
