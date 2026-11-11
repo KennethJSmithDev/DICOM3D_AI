@@ -1,5 +1,7 @@
 # DICOM3D AI Hub
 
+**[Interactive Safe Demo](https://kennethjsmithdev.github.io/DICOM3D_AI/)** · **[Media gallery](https://kennethjsmithdev.github.io/DICOM3D_AI/gallery/)** · **[Installation](contest/build154/README.md#install-and-run)**
+
 > This contest edition demonstrates DICOM3D's native InterSystems AI Hub interoperability workflow using the previously qualified Babylon Lite imaging interface. The broader DICOM3D platform continues independently with its Three.js/R3F-based v0.7.0-alpha.1 research prerelease.
 
 **[Contest installation and demonstration](contest/build154/README.md)** · **[Native agent source](contest/build154/src/Native005.Operation.cls)** · **[Broader platform prerelease](https://github.com/KennethJSmithDev/DICOM3D/releases/tag/v0.7.0-alpha.1)**
@@ -22,9 +24,9 @@ The male-only derivative has subsequently completed a fresh isolated Build 154 a
 
 The imaging agent uses its restricted native toolsets in-process. A separate historical Build 154 test qualified authenticated MCP with synthetic tools, but this repository does not yet provide a DICOM3D-specific authenticated MCP endpoint.
 
-## Local Safe Demo
+## Safe Demo
 
-The [Safe Demo source](contest/safe-demo/README.md) builds a standalone, browser-only anatomy and imaging presentation. Its AI outcomes are **simulated**; it does not connect to the native agent, IRIS or a model. It is not currently deployed from this repository. The existing viewer requires WebGPU; a WebGL fallback is not qualified. The demo's expanded male reference and the native frontend's reference are separately packaged.
+The [Safe Demo source](contest/safe-demo/README.md) builds a standalone, browser-only anatomy and imaging presentation. Its AI outcomes are **simulated**; it does not connect to the native agent, IRIS or a model. The [interactive demo](https://kennethjsmithdev.github.io/DICOM3D_AI/) is a separate static presentation. The existing viewer requires WebGPU; a WebGL fallback is not qualified. The demo's expanded male reference and the native frontend's reference are separately packaged.
 
 The H000 source-binding metadata and notice retain labels from a pre-publication checkpoint. Those historical labels do not describe the current publication status of this repository; the source attribution, license terms and research limitations still apply.
 
