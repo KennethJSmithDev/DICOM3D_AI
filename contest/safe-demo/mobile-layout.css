@@ -67,3 +67,29 @@ body.public-workstation #simOutcome:not([hidden]) {position:absolute;z-index:10;
   body.public-workstation .simulation-banner {top:2px;left:auto;right:14px;transform:none;font-size:9px}
   body.public-workstation #simOutcome:not([hidden]) {position:absolute;inset:auto 8px calc(64px + env(safe-area-inset-bottom));width:auto;max-height:45dvh;overflow:auto}
 }
+
+/* Compact controls wrap inside the viewer without changing the camera state. */
+@media (max-width:800px) {
+  body.public-workstation main.viewport {aspect-ratio:auto; height:min(55dvh, 550px); min-height:350px}
+  body.public-workstation #cameraControls {left:8px;right:8px;bottom:8px}
+  body.public-workstation main.viewport #renderCanvas {height:calc(100% - 165px)}
+  body.public-workstation #cameraControls .camera-actions {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;overflow:visible;width:100%;padding:4px;background:#071b28f0;border:1px solid #28566a;border-radius:6px}
+  body.public-workstation #cameraControls .camera-actions button {min-width:0;min-height:44px;white-space:normal;line-height:1.15;padding:4px;font-size:11px}
+  body.public-workstation .reference-footer-banner:not([hidden]) {bottom:165px;font-size:10px}
+  body.public-workstation .simulation-banner {font-size:10px}
+}
+.webgpu-unavailable {position:fixed;inset:1rem;z-index:10000;margin:auto;max-width:34rem;max-height:max-content;padding:1.25rem;border:2px solid #72ddf6;border-radius:.75rem;background:#071c28;color:#f2fbff;font:16px/1.5 system-ui,sans-serif;box-shadow:0 10px 50px #000c}
+.webgpu-unavailable strong {display:block;font-size:1.25rem;margin:0 0 .5rem}
+
+#compactViewSwitch {display:none}
+@media (max-width:800px) {
+  body.public-workstation:has(#imagingDock:not([hidden])) #compactViewSwitch {display:flex;gap:4px;flex-basis:100%}
+  body.public-workstation #compactViewSwitch button {flex:1;min-height:44px}
+  body.public-workstation #compactViewSwitch button[aria-pressed="true"] {outline:2px solid #67ddf6;outline-offset:-2px}
+  body.public-workstation #viewingArea[data-compact-view="ct"]:has(#imagingDock:not([hidden])) .viewport-slot {visibility:hidden;pointer-events:none}
+  body.public-workstation #viewingArea[data-compact-view="3d"] #imagingDock:not([hidden]) {visibility:hidden;pointer-events:none}
+  body.public-workstation #viewingArea[data-compact-view="3d"]:has(#imagingDock:not([hidden])) main.viewport #renderCanvas {height:calc(100% - 70px)}
+}
+
+.webgpu-unavailable a {color:#82e8ff}
+.webgpu-unavailable a:focus-visible {outline:3px solid #fff;outline-offset:3px}

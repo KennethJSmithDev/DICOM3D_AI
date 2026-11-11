@@ -15,6 +15,9 @@
     if (link) {
       link.textContent = 'AI Hub contest source';
       link.href = 'https://github.com/KennethJSmithDev/DICOM3D_AI';
+      const gallery = document.createElement('a');
+      gallery.href = './gallery/'; gallery.textContent = 'Media gallery';
+      link.after(gallery);
     }
     const identity = document.querySelector('.release-identity');
     if (identity) identity.textContent = 'AI HUB · CONTEST EDITION';
@@ -28,6 +31,9 @@
     const viewport = document.querySelector('main.viewport');
     if (!library || !heading || !evidence || !notice || !footerText || !viewport) return;
     evidence.append(notice);
+    const mediaLink = document.createElement('a');
+    mediaLink.href = './gallery/'; mediaLink.textContent = 'Media gallery';
+    evidence.append(document.createElement('br'), mediaLink);
     const expandedNotice = document.createElement('a');
     expandedNotice.href = './reference/EXPANDED-BODYPARTS3D-NOTICE.md';
     expandedNotice.textContent = 'Expanded BodyParts3D attribution and changes';
@@ -78,7 +84,21 @@
     if (tools && area && stage) {
       tools.open = true;
       toolPanel.append(toolClose, tools); workspace.append(toolPanel);
-      actions.append(toolButton); stage.insertBefore(actions,area);
+      const viewingArea = document.querySelector('#viewingArea');
+      const compactSwitch = document.createElement('div');
+      compactSwitch.id = 'compactViewSwitch';
+      compactSwitch.setAttribute('role', 'group');
+      compactSwitch.setAttribute('aria-label', 'Compact study view');
+      const ctButton = document.createElement('button'); ctButton.type = 'button'; ctButton.textContent = 'CT';
+      const viewButton = document.createElement('button'); viewButton.type = 'button'; viewButton.textContent = '3D';
+      const chooseView = mode => {
+        viewingArea.dataset.compactView = mode;
+        ctButton.setAttribute('aria-pressed', String(mode === 'ct'));
+        viewButton.setAttribute('aria-pressed', String(mode === '3d'));
+      };
+      ctButton.onclick = () => chooseView('ct'); viewButton.onclick = () => chooseView('3d');
+      compactSwitch.append(ctButton, viewButton); chooseView('ct');
+      actions.append(compactSwitch, toolButton); stage.insertBefore(actions,area);
       const showTools = show => { toolPanel.hidden = !show; toolButton.setAttribute('aria-expanded',String(show)); };
       toolButton.onclick = () => {
         const result = document.querySelector('#simOutcome');

@@ -1,5 +1,29 @@
 /* Quality is an explicit presentation choice, independent of screen width. */
 (() => {
+
+  // The renderer is WebGPU-only. This separate notice still works if startup fails.
+  function showWebGPUUnavailable() {
+    if (document.querySelector('#webgpuUnavailable')) return;
+    const notice = document.createElement('section');
+    notice.id = 'webgpuUnavailable'; notice.className = 'webgpu-unavailable';
+    notice.setAttribute('role', 'alert');
+    const title = document.createElement('strong'); title.textContent = 'WebGPU is unavailable';
+    const message = document.createElement('p');
+    message.textContent = 'This Safe Demo requires WebGPU and could not obtain a compatible adapter. Try a current WebGPU-capable browser with hardware acceleration enabled. This demo does not provide a WebGL fallback.';
+    const detail = document.createElement('p');
+    detail.textContent = 'The native AI Hub workflow is installed and run separately; this browser-only demo simulates AI outcomes.';
+    const source = document.createElement('a');
+    source.href = 'https://github.com/KennethJSmithDev/DICOM3D_AI';
+    source.textContent = 'View installation and source';
+    notice.append(title, message, detail, source); document.body.prepend(notice);
+  }
+  function checkWebGPU() {
+    if (!navigator.gpu || typeof navigator.gpu.requestAdapter !== 'function') { showWebGPUUnavailable(); return; }
+    Promise.resolve().then(() => navigator.gpu.requestAdapter()).then(
+      adapter => { if (!adapter) showWebGPUUnavailable(); }, () => showWebGPUUnavailable());
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', checkWebGPU, {once:true});
+  else checkWebGPU();
   const key = 'dicom3d-aihub-demo-quality';
   let stored = null;
   try { stored = localStorage.getItem(key); } catch {}
@@ -11,7 +35,7 @@
     if (!header || !lab || document.querySelector('#demoQuality')) return;
     const badge = document.createElement('span');
     badge.className = 'simulation-banner';
-    badge.textContent = 'Safe Demo · simulated AI outcomes';
+    badge.textContent = 'Safe Demo · simulated AI · WebGPU required';
     header.append(badge);
     const bar = document.createElement('section');
     bar.id = 'demoQuality'; bar.className = 'demo-profile';
