@@ -49,9 +49,20 @@ function walk(dir) {
         const initial = 'hidden:new Set,clip:y,opacity:new Map';
         const restore = 'b.selected=null,b.hidden.clear(),b.isolate=!1';
         if (value.split(initial).length !== 2 || value.split(restore).length !== 2) throw Error('Unexpected reference controller identity');
-        const skins = '[...f.keys()].filter(e=>e===\x60FMA7163\x60||e===\x60VH_F_skin\x60)';
-        value = value.replace(initial, 'hidden:new Set('+skins+'),clip:y,opacity:new Map');
-        value = value.replace(restore, 'b.selected=null,b.hidden.clear(),'+skins+'.forEach(e=>b.hidden.add(e)),b.isolate=!1');
+        // The original qualified skeleton/organ view is the initial presentation;
+        // all other atlas owners remain searchable and can be shown explicitly.
+        const core = ['FMA23881','FMA50801','FMA7088','FMA7309','FMA7310','FMA7197','FMA7148','FMA7200','FMA7201','FMA7198','FMA7204','FMA7205','FMA15900','FMA3734','FMA7394','FMA7131','FMA23130','FMA23464','FMA23467','FMA9713','FMA24474','FMA24477','FMA24480','FMA11343','FMA23131','FMA23465','FMA23468','FMA9714','FMA24475','FMA24478','FMA24481','FMA11344'];
+        const hidden = '[...f.keys()].filter(e=>!'+JSON.stringify(core)+'.includes(e))';
+        value = value.replace(initial, 'hidden:new Set('+hidden+'),clip:y,opacity:new Map');
+        value = value.replace(restore, 'b.selected=null,b.hidden.clear(),'+hidden+'.forEach(e=>b.hidden.add(e)),b.isolate=!1');
+        value = value.replace('Restore full model', 'Restore reference view');
+        // Blended Lite materials do not write depth. Use opaque pipelines when
+        // possible and a per-mesh blended copy only while fading is requested.
+        const materialSetup = 'for(let e of C)e.plugins=[ee],e.alphaBlend=!0;De(e);';
+        const refresh = 'function Y(){for(let[e,t]of f)for(let n of t)n.visible=!b.hidden.has(e)&&(!b.isolate||e===b.selected),n.material=e===b.selected?s:_.get(n),n.material.alpha=(te.get(_.get(n))??1)*(b.opacity.get(e)??1)*(b.context&&b.selected&&e!==b.selected&&!b.isolate?.28:1);';
+        if (value.split(materialSetup).length !== 2 || value.split(refresh).length !== 2) throw Error('Unexpected reference material identity');
+        value = value.replace(materialSetup, 'for(let e of C)e.plugins=[ee],e.alphaBlend=(e.alpha??1)<1;De(e);let __alphaCopies=new WeakMap;');
+        value = value.replace(refresh, 'function Y(){for(let[e,t]of f)for(let n of t){n.visible=!b.hidden.has(e)&&(!b.isolate||e===b.selected);let base=e===b.selected?s:_.get(n),alpha=(te.get(_.get(n))??1)*(b.opacity.get(e)??1)*(b.context&&b.selected&&e!==b.selected&&!b.isolate?.28:1),mat=base;if(n.visible&&alpha<.999&&base.alphaBlend!==!0){let c=__alphaCopies.get(n);if(!c||c.source!==base){c={source:base,material:{...base,alphaBlend:!0,_renderFeatures:void 0}};__alphaCopies.set(n,c)}mat=c.material}n.material=mat,mat.alpha=alpha;}');
       }
       if (rel === 'assets/public-release-BcTT6c7N.js') {
         const original = 'title:`DICOM3D v0.6.5 RC \u2014 Visual Research Workstation`';
