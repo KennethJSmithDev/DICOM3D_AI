@@ -19,6 +19,10 @@
       gallery.href = './gallery/'; gallery.textContent = 'Media gallery';
       link.after(gallery);
     }
+    const brand = document.querySelector('.app-header img[src$="semantic-cube.svg"]');
+    if (brand) { brand.src = './brand/dicom3d-ai-hub-logo.png'; brand.alt = 'DICOM3D AI Hub logo'; brand.classList.add('aihub-logo'); }
+    const wordmark = document.querySelector('.app-header h1');
+    if (wordmark) wordmark.innerHTML = 'DICOM<span>3D</span> <span class="aihub-wordmark">AI HUB</span>';
     const identity = document.querySelector('.release-identity');
     if (identity) identity.textContent = 'AI HUB · CONTEST EDITION';
 

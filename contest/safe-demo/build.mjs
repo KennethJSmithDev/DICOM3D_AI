@@ -53,7 +53,23 @@ function walk(dir) {
         value = value.replace(initial, 'hidden:new Set('+skins+'),clip:y,opacity:new Map');
         value = value.replace(restore, 'b.selected=null,b.hidden.clear(),'+skins+'.forEach(e=>b.hidden.add(e)),b.isolate=!1');
       }
+      if (rel === 'assets/public-release-BcTT6c7N.js') {
+        const original = 'title:`DICOM3D v0.6.5 RC \u2014 Visual Research Workstation`';
+        if (value.split(original).length !== 2) throw Error('Unexpected release title identity');
+        value = value.replace(original, 'title:`DICOM3D AI Hub \u2014 Safe Demo`');
+      }
       if (rel === 'assets/public-workstation-4r6yTnRH.js') {
+        // Default to Scientific; retain the chosen mode across compatible view switches.
+        const initialMode = 'O=null,k=null,A=0,j=`holographic`,M=1';
+        const attachMode = 'j=e.visual.supportedModes?.length===1?`scientific`:`holographic`,M=1';
+        const initialButtons = '<button data-mode="scientific">Scientific</button><button data-mode="holographic" aria-pressed="true">Holographic</button>';
+        const initialLabel = '<span id="viewLabel">HOLOGRAPHIC</span>';
+        for (const part of [initialMode, attachMode, initialButtons, initialLabel])
+          if (value.split(part).length !== 2) throw Error('Unexpected mode controller identity');
+        value = value.replace(initialMode, 'O=null,k=null,A=0,j=`scientific`,M=1');
+        value = value.replace(attachMode, 'j=e.visual.supportedModes&&!e.visual.supportedModes.includes(j)?`scientific`:j,M=1');
+        value = value.replace(initialButtons, '<button data-mode="scientific" aria-pressed="true">Scientific</button><button data-mode="holographic" aria-pressed="false">Holographic</button>');
+        value = value.replace(initialLabel, '<span id="viewLabel">SCIENTIFIC</span>');
         // Preserve the controller and source asset: only completed playback settles into Scientific.
         const complete = 'q(),H.lastPlay.completedAtMs=e,W()';
         const reducedPlay = 'if(J(\x60materialization\x60),d(\x60reduced\x60).checked){X(1);return}';
@@ -65,7 +81,7 @@ function walk(dir) {
         value = value.replace(reducedWhilePlaying, 'd(\x60reduced\x60).checked&&(N?(q(),X(1),J(\x60scientific\x60)):(q(),X(1))),W()');
       }
       if (['index.html','reference.html'].includes(rel)) {
-        value = value.replace('<title>DICOM3D v0.6.5 RC — Visual Research Workstation</title>', '<title>DICOM3D — AI Hub Safe Demo</title>');
+        value = value.replace('<title>DICOM3D v0.6.5 RC — Visual Research Workstation</title>', '<title>DICOM3D AI Hub — Safe Demo</title>');
         value = value.replace('</head>', '<link rel="stylesheet" href="./mobile-layout.css"><script src="./mobile-profile.js"></script></head>');
         value = value.replace('</body>', '<script src="./navigation.js" defer></script><script src="./simulation.js" defer></script></body>');
       }
@@ -96,6 +112,7 @@ atlas.manifest.asset.relative_filename = 'bp3d-male.glb';
 writeFileSync(join(dest,'reference','bp3d-male.glb'), Buffer.from(atlas.bytes));
 writeFileSync(join(dest,'reference','bp3d-male.manifest.json'), JSON.stringify(atlas.manifest,null,2)+'\n');
 cpSync(join(here,'expanded-atlas','LICENSE.md'), join(dest,'reference','EXPANDED-BODYPARTS3D-NOTICE.md'));
+cpSync(resolve(here,'../../assets/branding/dicom3d-ai-hub-logo.png'), join(dest,'brand','dicom3d-ai-hub-logo.png'));
 for (const file of ['mobile-profile.js','mobile-layout.css','navigation.js','simulation.js']) cpSync(join(here,file), join(dest,file));
 const note = {mode:'static-simulation', nativeAgent:false, source:'AIHub-Contest-Build 8631beab6717b1508aa86437c68f4acbe5ea083a', quality:'Explicit choice; efficient caps at 30fps and DPR 1 independently of layout', maleOwners:1205, atlasIndexSha256:'574feef9e1e659a644cf51a51042e8c65b6433455b95070b7ae89aa681357478', femaleAtlas:false};
 writeFileSync(join(dest,'demo-identity.json'), JSON.stringify(note,null,2)+'\n');

@@ -93,3 +93,11 @@ body.public-workstation #simOutcome:not([hidden]) {position:absolute;z-index:10;
 
 .webgpu-unavailable a {color:#82e8ff}
 .webgpu-unavailable a:focus-visible {outline:3px solid #fff;outline-offset:3px}
+
+/* AI Hub identity reuses the existing approved artwork and header. */
+body.public-workstation .app-header img.aihub-logo {width:56px;height:56px;object-fit:contain}
+body.public-workstation .app-header .aihub-wordmark {font-size:.55em;white-space:nowrap;margin-left:.2em}
+@media (max-width:800px) {
+  body.public-workstation .app-header img.aihub-logo {width:42px;height:42px}
+  body.public-workstation .app-header .aihub-wordmark {font-size:.48em;margin-left:.1em}
+}
