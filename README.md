@@ -24,6 +24,10 @@ The male-only derivative has subsequently completed a fresh isolated Build 154 a
 
 The imaging agent uses its restricted native toolsets in-process. A separate historical Build 154 test qualified authenticated MCP with synthetic tools, but this repository does not yet provide a DICOM3D-specific authenticated MCP endpoint.
 
+## IPM package
+
+The IPM module installs the native contest workflow classes. The viewer, FHIR service and model require separate setup. See the [IPM guide](docs/IPM.md); installation from the public registry by package name has not yet been verified.
+
 ## Safe Demo
 
 The [Safe Demo source](contest/safe-demo/README.md) builds a standalone, browser-only anatomy and imaging presentation. Its AI outcomes are **simulated**; it does not connect to the native agent, IRIS or a model. The [interactive demo](https://kennethjsmithdev.github.io/DICOM3D_AI/) is a separate static presentation. The existing viewer requires WebGPU; a WebGL fallback is not qualified. The demo's expanded male reference and the native frontend's reference are separately packaged.
