@@ -31,3 +31,9 @@ The [Safe Demo source](contest/safe-demo/README.md) builds a standalone, browser
 The H000 source-binding metadata and notice retain labels from a pre-publication checkpoint. Those historical labels do not describe the current publication status of this repository; the source attribution, license terms and research limitations still apply.
 
 Software: [Apache-2.0](LICENSE). Existing [notice](NOTICE) and [asset-specific attribution](contest/build154/docs/ASSETS.md) remain separate.
+
+## Development transparency
+
+This project is developed through human-directed, AI-assisted collaboration. AI assistants, including ChatGPT and OpenAI Codex, contribute to research, design, code, tests, documentation, and reviews. Some project materials are AI-generated or substantially AI-assisted; they are not represented as exclusively human-authored.
+
+Kenneth J. Smith directs the project, decides what is accepted and published, and takes responsibility for its releases. Functionality and verification claims are limited to the evidence documented for the relevant version. This disclosure does not replace individual contributor credits, dependency licenses, or third-party attribution.
