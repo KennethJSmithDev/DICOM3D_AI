@@ -1,0 +1,3 @@
+set sc=$system.OBJ.Load("/tmp/idea973/tests/GeneratedTests.cls","ck") if '$system.Status.IsOK(sc) { do $system.OBJ.DisplayError(sc) do $system.Process.Terminate(,1) }
+do ##class(DICOM3DAI.Metadata.GeneratedTests).Run("/tmp/idea973/reviewed-plan.json")
+halt

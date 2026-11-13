@@ -1,0 +1,10 @@
+{
+  "project": "DICOM3D_AI",
+  "candidateVersion": "0.2.0",
+  "status": "github-source-0.2.0",
+  "publishedSourceModuleVersion": "0.2.0",
+  "registryVersion": "unverified",
+  "moduleVersionChanged": true,
+  "nativePacketChanged": false,
+  "releaseOrRegistryPublished": false
+}

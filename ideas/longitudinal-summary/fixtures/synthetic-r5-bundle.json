@@ -1,0 +1,12 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {"resource": {"resourceType": "Patient", "id": "fictional-person-001", "active": true}},
+    {"resource": {"resourceType": "ImagingStudy", "id": "fictional-study-2024", "status": "available", "subject": {"reference": "Patient/fictional-person-001"}, "started": "2024-01-15T12:00:00Z"}},
+    {"resource": {"resourceType": "ImagingStudy", "id": "fictional-study-2025", "status": "available", "subject": {"reference": "Patient/fictional-person-001"}, "started": "2025-01-15T12:00:00Z"}},
+    {"resource": {"resourceType": "Observation", "id": "fictional-measure-2024", "status": "final", "code": {"text": "Fictional research measurement"}, "subject": {"reference": "Patient/fictional-person-001"}, "effectiveDateTime": "2024-01-15T12:00:00Z", "derivedFrom": [{"reference": "ImagingStudy/fictional-study-2024"}], "valueQuantity": {"value": 7, "unit": "mm", "system": "http://unitsofmeasure.org", "code": "mm"}}},
+    {"resource": {"resourceType": "Observation", "id": "fictional-measure-2025", "status": "final", "code": {"text": "Fictional research measurement"}, "subject": {"reference": "Patient/fictional-person-001"}, "effectiveDateTime": "2025-01-15T12:00:00Z", "derivedFrom": [{"reference": "ImagingStudy/fictional-study-2025"}], "valueQuantity": {"value": 9, "unit": "mm", "system": "http://unitsofmeasure.org", "code": "mm"}}},
+    {"resource": {"resourceType": "Provenance", "id": "fictional-provenance", "recorded": "2026-01-01T00:00:00Z", "target": [{"reference": "Observation/fictional-measure-2024"}, {"reference": "Observation/fictional-measure-2025"}], "agent": [{"who": {"display": "Synthetic fixture generator"}}]}}
+  ]
+}

@@ -1,0 +1,4 @@
+set files(1)="/tmp/idea973/src/Request.cls",files(2)="/tmp/idea973/src/Response.cls",files(3)="/tmp/idea973/src/Service.cls",files(4)="/tmp/idea973/src/Operation.cls",files(5)="/tmp/idea973/src/Production.cls",files(6)="/tmp/idea973/tests/Qualification.cls"
+for i=1:1:6 { set sc=$system.OBJ.Load(files(i),"ck") if '$system.Status.IsOK(sc) { do $system.OBJ.DisplayError(sc) do $system.Process.Terminate(,1) } }
+do ##class(DICOM3DAI.Metadata.Qualification).Run()
+halt

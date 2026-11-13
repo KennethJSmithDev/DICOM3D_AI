@@ -70,7 +70,11 @@
       event.stopImmediatePropagation();
       referencePanel.hidden = !referencePanel.hidden;
       imaging.setAttribute('aria-expanded',String(!referencePanel.hidden));
+      if (!referencePanel.hidden && event.detail === 0) referenceClose.focus();
     }, true);
+    referencePanel.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); referenceClose.click(); }
+    });
 
     const tools = document.querySelector('.source-tools');
     const area = document.querySelector('#publicWorkArea');
@@ -83,6 +87,7 @@
     const toolPanel = document.createElement('section');
     toolPanel.id = 'imagingToolsPanel'; toolPanel.hidden = true;
     toolPanel.setAttribute('aria-label','Imaging tools and linked inspection');
+    toolButton.setAttribute('aria-controls', 'imagingToolsPanel');
     const toolClose = document.createElement('button');
     toolClose.type = 'button'; toolClose.textContent = 'Close imaging tools';
     if (tools && area && stage) {
@@ -104,12 +109,16 @@
       compactSwitch.append(ctButton, viewButton); chooseView('ct');
       actions.append(compactSwitch, toolButton); stage.insertBefore(actions,area);
       const showTools = show => { toolPanel.hidden = !show; toolButton.setAttribute('aria-expanded',String(show)); };
-      toolButton.onclick = () => {
+      toolButton.onclick = event => {
         const result = document.querySelector('#simOutcome');
         if (result && !result.hidden) { result.hidden = true; document.dispatchEvent(new Event('dicom3d-overlay-change')); }
         showTools(toolPanel.hidden);
+        if (!toolPanel.hidden && event.detail === 0) toolClose.focus();
       };
       toolClose.onclick = () => { showTools(false); toolButton.focus(); };
+      toolPanel.addEventListener('keydown', event => {
+        if (event.key === 'Escape') { event.preventDefault(); toolClose.click(); }
+      });
       document.addEventListener('dicom3d-workspace-change', event => {
         const study = event.detail?.kind === 'study';
         actions.hidden = !study; footerText.hidden = study; showAcquired.hidden = !study;
@@ -145,10 +154,14 @@
       open.setAttribute('aria-expanded', 'false'); open.focus();
     });
     importer.append(close);
-    open.addEventListener('click', () => {
+    open.addEventListener('click', event => {
       const show = importer.hidden;
       importer.hidden = !show; importer.open = show;
       open.setAttribute('aria-expanded', String(show));
+      if (show && event.detail === 0) close.focus();
+    });
+    importer.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); close.click(); }
     });
     // Preserve the existing handlers and source-owned state; request the
     // established reference transition only when the study is active.

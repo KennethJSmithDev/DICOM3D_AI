@@ -3,7 +3,7 @@
   <Document name="dicom3d-ai.ZPM">
     <Module>
       <Name>dicom3d-ai</Name>
-      <Version>0.1.0</Version>
+      <Version>0.2.0</Version>
       <Description>DICOM3D_AI native AI Hub contest workflow classes</Description>
       <Author><Person>Kenneth J. Smith</Person><License>Apache-2.0</License></Author>
       <Packaging>module</Packaging>
@@ -18,8 +18,44 @@
       <Resource Name="Native005.Operation.CLS"/>
       <Resource Name="Native005.Service.CLS"/>
       <Resource Name="Native005.Production.CLS"/>
+      <Resource Name="DICOM3DAI.Metadata.Request.CLS"/>
+      <Resource Name="DICOM3DAI.Metadata.Response.CLS"/>
+      <Resource Name="DICOM3DAI.Metadata.Service.CLS"/>
+      <Resource Name="DICOM3DAI.Metadata.Operation.CLS"/>
+      <Resource Name="DICOM3DAI.Metadata.Production.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.FixtureRequest.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.FixtureResponse.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.AuthFixtureReader.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.AuthFixtureImaging.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.H000Binding.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.H000Evidence.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.H000Tools.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.H000AgentValidator.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.H000AgentOperation.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.H000AgentService.CLS"/>
+      <Resource Name="DICOM3DAI.FHIR.H000Production.CLS"/>
       <Invoke Class="DICOM3DAI.IPM.Guard" Method="Check" Phase="Reload" When="Before" CheckStatus="true"/>
       <FileCopy Name="docs/IPM.md" Target="${ipmDir}installed-docs/IPM.md"/>
+      <FileCopy Name="docs/IDEAS.md" Target="${ipmDir}installed-docs/IDEAS.md"/>
+      <FileCopy Name="docs/JUDGE-WALKTHROUGH.md" Target="${ipmDir}installed-docs/JUDGE-WALKTHROUGH.md"/>
+      <FileCopy Name="ideas/fhir-openapi-r5/fhir-openapi.mjs" Target="${ipmDir}tools/fhir-openapi.mjs"/>
+      <FileCopy Name="ideas/fhir-openapi-r5/export-openapi.mjs" Target="${ipmDir}tools/export-openapi.mjs"/>
+      <FileCopy Name="ideas/ai-test-assist/plan_runner.py" Target="${ipmDir}tools/plan_runner.py"/>
+      <FileCopy Name="ideas/ai-test-assist/propose_local.py" Target="${ipmDir}tools/propose_local.py"/>
+      <FileCopy Name="ideas/ai-test-assist/review_metadata_plan.py" Target="${ipmDir}tools/review_metadata_plan.py"/>
+      <FileCopy Name="ideas/ai-test-assist/synthetic-plan.json" Target="${ipmDir}tools/synthetic-plan.json"/>
+      <FileCopy Name="ideas/ai-test-assist/README.md" Target="${ipmDir}tools/README.md"/>
+      <FileCopy Name="ideas/fhir-versioned-evidence/README.md" Target="${ipmDir}experimental/fhir/README.md"/>
+      <FileCopy Name="ideas/fhir-versioned-evidence/reader.mjs" Target="${ipmDir}experimental/fhir/reader.mjs"/>
+      <FileCopy Name="ideas/fhir-versioned-evidence/selection-profile.mjs" Target="${ipmDir}experimental/fhir/selection-profile.mjs"/>
+      <FileCopy Name="ideas/fhir-versioned-evidence/instance-binding.mjs" Target="${ipmDir}experimental/fhir/instance-binding.mjs"/>
+      <FileCopy Name="ideas/fhir-versioned-evidence/evidence-review.mjs" Target="${ipmDir}experimental/fhir/evidence-review.mjs"/>
+      <FileCopy Name="ideas/fhir-versioned-evidence/h000-projection.mjs" Target="${ipmDir}experimental/fhir/h000-projection.mjs"/>
+      <FileCopy Name="ideas/fhir-versioned-evidence/prepare-h000-fixture.mjs" Target="${ipmDir}experimental/fhir/prepare-h000-fixture.mjs"/>
+      <FileCopy Name="ideas/fhir-versioned-evidence/serve-h000-fixture.py" Target="${ipmDir}experimental/fhir/serve-h000-fixture.py"/>
+      <FileCopy Name="contest/build154/fixtures/evidence.json" Target="${ipmDir}experimental/fhir/fixtures/evidence.json"/>
+      <FileCopy Name="contest/build154/frontend/demo/h000/source-binding.json" Target="${ipmDir}experimental/fhir/fixtures/source-binding.json"/>
+      <FileCopy Name="contest/build154/frontend/demo/h000/NOTICE.md" Target="${ipmDir}experimental/fhir/fixtures/NOTICE.md"/>
       <AfterInstallMessage>Native classes installed. External research fixture, restricted FHIR, model, relay and viewer require separate setup; see docs/IPM.md.</AfterInstallMessage>
     </Module>
   </Document>

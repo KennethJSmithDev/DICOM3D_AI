@@ -1,0 +1,7 @@
+set statement=##class(%SQL.Statement).%New(),sc=statement.%Prepare("SELECT SessionId, MessageBodyId FROM Ens.MessageHeader WHERE MessageBodyClassName = ?")
+if '$system.Status.IsOK(sc) { do $system.OBJ.DisplayError(sc) do $system.Process.Terminate(,1) }
+set rows=statement.%Execute("DICOM3DAI.Metadata.Request"),found=0
+while rows.%Next() { set m=##class(DICOM3DAI.Metadata.Request).%OpenId(rows.%Get("MessageBodyId")) if $isobject(m)&&(m.RequestId="request-synthetic-001")&&(m.CaseId="case-synthetic-001")&&(m.EvidenceReference="Observation/synthetic-observation-001")&&(m.SourceStudyId="study-synthetic-001")&&(m.EvidenceStudyId="study-synthetic-001")&&(rows.%Get("SessionId")'="") set found=1 }
+if 'found { write "FAIL: complete metadata after restart",! do $system.Process.Terminate(,1) }
+write "PASS: complete metadata after restart",!
+halt

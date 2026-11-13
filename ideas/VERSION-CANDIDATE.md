@@ -1,0 +1,7 @@
+# Source version: 0.2.0
+
+The GitHub source `module.xml` is set to `0.2.0` and includes the existing native classes, five synthetic metadata classes, an offline FHIR/OpenAPI tool and separate experimental H000 binding classes and fixture resources. GitHub source availability does not establish a GitHub Release, registry publication or installation by package name. The frozen packet and historical releases remain unchanged.
+
+Proposed additions for review: local R5 CapabilityStatement-to-OpenAPI experiments, focused Safe Demo keyboard support, synthetic interoperability metadata tests, a review-gated AI test-plan experiment, DICOM adapter research scope, and a fictional longitudinal fixture. Each has narrower qualification than a supported feature; see the linked experiment documentation.
+
+Before registry or release promotion, review the included scope, authentication, privacy and source licensing; qualify the exact final artifact and its supported installation boundary; and review release notes and public documentation. The experimental R4/R4B representations are derived projections and remain review-only. One installed-class R5 native/browser witness passed with a model copy that matched before and after; an earlier transient read mismatch remains unexplained. The package copies the optional local test-plan tools; DICOM and longitudinal research remain source-only. A version increment is not proof of those gates.

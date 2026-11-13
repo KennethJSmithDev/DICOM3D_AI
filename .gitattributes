@@ -5,5 +5,13 @@ contest/build154/** -text
 # The IPM class mirrors must match the frozen native sources byte-for-byte.
 src/cls/Native001/** -text
 src/cls/Native005/** -text
+# Keep the qualified research source and its IPM mirrors byte-identical.
+src/cls/DICOM3DAI/Metadata/** -text
+ideas/message-metadata/src/** -text
+# Preserve experimental FHIR research classes and their IPM mirrors byte-for-byte.
+src/cls/DICOM3DAI/FHIR/** -text whitespace=cr-at-eol
+ideas/fhir-versioned-evidence/native/** -text whitespace=cr-at-eol
+# Preserve the reviewed research fixture test as authored.
+ideas/longitudinal-summary/test_fixture.py -text whitespace=cr-at-eol
 # The atlas index and bundle manifests pin exact source bytes.
 contest/safe-demo/** -text

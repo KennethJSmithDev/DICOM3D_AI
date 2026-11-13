@@ -12,6 +12,8 @@
 
 This contest edition demonstrates a bounded decision-making task: an IRIS Interoperability production uses native `%AI.Agent` to explain a recorded public-research segmentation finding, retrieve restricted FHIR R5 evidence, validate its exact references and select the corresponding lesion in the imaging viewer. A synthetic source-identity mismatch requests review instead of inventing a correction.
 
+**For reviewers:** [Follow the judge walkthrough](docs/JUDGE-WALKTHROUGH.md) for the native decision, exact citations, visible selection, and synthetic mismatch. The [Safe Demo](https://kennethjsmithdev.github.io/DICOM3D_AI/) is an immediately interactive **simulation**; the native workflow runs separately after local installation.
+
 The integration reuses DICOM3D's existing Babylon Lite interface. The viewer alone is not the contest agent; the observable native evidence/decision/validation workflow is the contest-specific improvement. DICOM3D as a broader project predates the contest.
 
 Start with the [portable packet instructions](contest/build154/README.md#install-and-run). No private patient data, model weights, credentials or restricted IRIS image are included. The approved public H000 research example is explicit. Authorized Community AI Hub Build154 acquisition and separately supplied model weights are prerequisites. Local fixture authentication is not a production clinical authorization system. This is a research prototype, not diagnosis or clinical deployment.
@@ -27,6 +29,10 @@ The imaging agent uses its restricted native toolsets in-process. A separate his
 ## IPM package
 
 The IPM module installs the native contest workflow classes. The viewer, FHIR service and model require separate setup. See the [IPM guide](docs/IPM.md); installation from the public registry by package name has not yet been verified.
+
+The **0.2.0 source** also includes independently scoped FHIR CapabilityStatement-to-OpenAPI and synthetic message-metadata examples, plus optional local test-plan tools. See the [research additions](docs/IDEAS.md) for the exact scope, attribution, and limitations. These examples do not alter the native agent or establish a clinical, live-server, or provider-reliability qualification. DICOM and longitudinal research remain separately labeled in [the Ideas overview](ideas/README.md).
+
+The source also contains an **experimental, opt-in H000 evidence fixture**. Its R4 and R4B selected-field representations are derived from the retained R5 research fixture and remain review-only; they are not original records from R4 or R4B servers. A controlled R5 research witness used the installed 0.2.0 native classes, checked source identities and produced a validated agent decision that selected the initially unselected lesion in a headed viewer. The private test used a separately configured bridge and the Safe Demo viewer; the public demo remains simulated. The model copy matched its pinned hash before and after this run. A previous copy showed a transient mismatch whose cause remains unknown. One witness does not establish clinical validity, repeatability, general FHIR conformance or production security. The fixture, model, relay and viewer require separate setup; the experimental operation does not replace the historical native workflow. See the [versioned evidence notes](ideas/fhir-versioned-evidence/README.md).
 
 ## Safe Demo
 

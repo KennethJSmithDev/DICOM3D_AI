@@ -18,29 +18,38 @@
     panel.id = 'simOutcome'; panel.setAttribute('aria-live', 'polite');
     panel.hidden = true;
     panel.setAttribute('aria-label', 'Simulated result');
+    let opener = null;
     const set = (...lines) => {
       panel.replaceChildren();
       const close = document.createElement('button');
       close.type = 'button'; close.textContent = 'Close result';
-      close.onclick = () => { panel.hidden = true; document.dispatchEvent(new Event('dicom3d-overlay-change')); };
+      close.onclick = () => { panel.hidden = true; document.dispatchEvent(new Event('dicom3d-overlay-change')); opener?.focus(); };
       panel.append(close);
       for (const line of lines) { const p = document.createElement('p'); p.textContent = line; panel.append(p); }
       const tools = document.querySelector('#imagingToolsPanel');
       if (tools && !tools.hidden) document.querySelector('#imagingToolsToggle')?.click();
       panel.hidden = false;
       document.dispatchEvent(new Event('dicom3d-overlay-change'));
+      if (opener && document.activeElement === opener) close.focus();
     };
+    panel.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); panel.querySelector('button')?.click(); }
+    });
     const initial = () => { panel.hidden = true; panel.replaceChildren(); document.dispatchEvent(new Event('dicom3d-overlay-change')); };
     explain.onclick = () => {
+      opener = explain;
       if (selection.disabled) { set('SIMULATION: load the public research study before selecting the lesion.'); return; }
       if (selection.getAttribute('aria-pressed') !== 'true') selection.click();
       set('SIMULATED ACCEPTED FINDING', 'Structure: lesion.lung.mass.001',
         'Example evidence: Observation/r5p-h000-mask-volume; ImagingSelection/r5p-h000-segment-1.',
         'The recorded segmentation measurement is a research-derived value; it does not establish diagnosis or anatomical accuracy.');
     };
-    mismatch.onclick = () => set('SIMULATED REVIEW REQUESTED',
-      'Synthetic CT and SEG identities do not match. A reviewer would inspect the source evidence.',
-      'This example does not change the study or select a structure.');
+    mismatch.onclick = () => {
+      opener = mismatch;
+      set('SIMULATED REVIEW REQUESTED',
+        'Synthetic CT and SEG identities do not match. A reviewer would inspect the source evidence.',
+        'This example does not change the study or select a structure.');
+    };
     reset.onclick = () => { if (selection.getAttribute('aria-pressed') === 'true') selection.click(); initial(); };
     const actions = document.querySelector('#simActions');
     if (!actions) return;

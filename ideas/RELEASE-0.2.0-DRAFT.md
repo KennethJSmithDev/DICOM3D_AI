@@ -1,0 +1,12 @@
+# DICOM3D_AI 0.2.0 — source notes
+
+This candidate adds FHIR CapabilityStatement-to-OpenAPI projection, a synthetic interoperability message-metadata example, optional local tools for reviewed test plans, and focused keyboard improvements to the Safe Demo. The existing native AI Hub contest classes and frozen packet are preserved.
+
+- **FHIR/OpenAPI:** The optional offline Node.js exporter reuses the owner’s ISAIAH converter for R4 4.0.1, R4B 4.3.0, and R5 5.0.0 read/search declarations. It does not establish access rights, live server behavior or complete FHIR conformance.
+- **Synthetic metadata:** A separate example production passes request, case, study and evidence identifiers and requests review for conflicting declared study IDs. It is not a patient identity or clinical audit system. Its first shutdown request failed in one clean-install test; a later stop succeeded. The operator later reported accidentally closing the test window; the log does not independently establish the cause.
+- **Experimental H000 evidence:** Source-binding checks compare study, series, CT/SEG SOP instances and segment subset. R4/R4B are derived research projections and remain review-only. One genuine R5 native/browser witness using installed experimental classes showed a fresh selection; its isolated model copy passed its pinned hash before and after. An earlier transient model-read mismatch remains unexplained. This is not clinical or general FHIR-conformance qualification.
+- **Local test tools:** Reviewed declarative plans run only fixed synthetic cases. One local model-produced mismatch expectation was wrong and failed; an explicitly corrected plan passed. This is not an inference reliability claim.
+- **Safe Demo:** Improved keyboard focus and Escape handling for selected panels. Full accessibility and physical-device testing remain open.
+- **Research planning:** The source includes a DICOM adapter/mirror scope and a fictional longitudinal fixture. They are not qualified interoperability or summary features and are not installed by the IPM module.
+
+The 0.2.0 IPM review archive was tested locally. Installation requires the appropriate IRIS environment and does not start a production or configure a viewer, FHIR repository, provider, or credentials. A dedicated namespace is required; the collision guard does not perform an in-place upgrade. Registry installation, broad security review, actual screen-reader testing, and clinical use remain unqualified. The source documentation changed after the tested review archive was built.

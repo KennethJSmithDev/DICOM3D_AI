@@ -1,0 +1,8 @@
+{
+  "cases": [
+    {"id": "observation-read", "assertion": "operation-present", "path": "/Observation/{id}", "method": "get"},
+    {"id": "selection-read", "assertion": "operation-present", "path": "/ImagingSelection/{id}", "method": "get"},
+    {"id": "no-observation-delete", "assertion": "operation-absent", "path": "/Observation/{id}", "method": "delete"},
+    {"id": "no-patient-search", "assertion": "operation-absent", "path": "/Patient", "method": "get"}
+  ]
+}
