@@ -1,6 +1,6 @@
 # DICOM3D AI Hub
 
-**[Interactive Safe Demo](https://kennethjsmithdev.github.io/DICOM3D_AI/)** · **[Media gallery](https://kennethjsmithdev.github.io/DICOM3D_AI/gallery/)** · **[Installation](contest/build154/README.md#install-and-run)**
+**[Interactive Safe Demo](https://kennethjsmithdev.github.io/DICOM3D_AI/)** · **[Media gallery](https://kennethjsmithdev.github.io/DICOM3D_AI/gallery/)** · **[Open Exchange package · v0.2.0](https://openexchange.intersystems.com/package/DICOM3D-AI)** · **[Installation](contest/build154/README.md#install-and-run)**
 
 > This contest edition demonstrates DICOM3D's native InterSystems AI Hub interoperability workflow using the previously qualified Babylon Lite imaging interface. The broader DICOM3D platform continues independently with its Three.js/R3F-based v0.7.0-alpha.1 research prerelease.
 
