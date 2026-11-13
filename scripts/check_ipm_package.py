@@ -39,6 +39,7 @@ def main():
     copies = module.findall("FileCopy")
     assert {tuple(sorted(x.attrib.items())) for x in copies} == {
         tuple(sorted(x.items())) for x in (
+            {"Name": "NOTICE", "Target": "${ipmDir}installed-docs/NOTICE"},
             {"Name": "docs/IPM.md", "Target": "${ipmDir}installed-docs/IPM.md"},
             {"Name": "docs/IDEAS.md", "Target": "${ipmDir}installed-docs/IDEAS.md"},
             {"Name": "docs/JUDGE-WALKTHROUGH.md", "Target": "${ipmDir}installed-docs/JUDGE-WALKTHROUGH.md"},

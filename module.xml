@@ -35,6 +35,7 @@
       <Resource Name="DICOM3DAI.FHIR.H000AgentService.CLS"/>
       <Resource Name="DICOM3DAI.FHIR.H000Production.CLS"/>
       <Invoke Class="DICOM3DAI.IPM.Guard" Method="Check" Phase="Reload" When="Before" CheckStatus="true"/>
+      <FileCopy Name="NOTICE" Target="${ipmDir}installed-docs/NOTICE"/>
       <FileCopy Name="docs/IPM.md" Target="${ipmDir}installed-docs/IPM.md"/>
       <FileCopy Name="docs/IDEAS.md" Target="${ipmDir}installed-docs/IDEAS.md"/>
       <FileCopy Name="docs/JUDGE-WALKTHROUGH.md" Target="${ipmDir}installed-docs/JUDGE-WALKTHROUGH.md"/>
